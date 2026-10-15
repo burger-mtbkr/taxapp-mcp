@@ -3,7 +3,7 @@
 # taxapp.nz MCP server
 
 Ask your AI app about your [Tax App](https://taxapp.nz) records in plain words: income, expenses, rental properties
-and New Zealand tax. Where your organisation allows it, it can add new records too.
+and New Zealand tax. Where your organisation allows it, it can add and change records too.
 
 Tax App is a New Zealand app for households, sole traders and rental-property owners. It keeps income, expenses,
 contacts, rental properties and bank reconciliation in one place and works out indicative tax from Inland Revenue's
@@ -22,7 +22,7 @@ no key or password to copy into it.
 
 1. You need a Tax App account. [Sign up free](https://app.taxapp.nz/signup).
 2. An owner of your organisation turns AI connectors on in **Settings > AI connectors** (or while connecting) and
-   chooses **Read only** or **Read and add records**.
+   chooses **Read only** or **Read, add and change records**.
 3. Add the server in your AI app and sign in to Tax App when asked.
 
 ## Configure it
@@ -63,6 +63,8 @@ Ask in plain words, for example:
 - "Which bank transactions still need sorting?"
 - "Add a $120 plumber bill for 12 Smith Street."
 - "Add Jane Brown as a tenant at 12 Smith Street from 1 May at $650 a week."
+- "The rent at 12 Smith Street goes up to $680 a week from 1 June."
+- "Change last week's commission payment to $1,250."
 
 The figures come straight from your records. The answer is written by the AI, so check anything that matters in the
 app. When a detail is unclear, such as which contact, property or expense account you mean, the AI app shows you the
@@ -73,31 +75,38 @@ dollars.
 
 ## Tools
 
-| Area | Read | Add |
-|------|------|-----|
+| Area | Read | Add and change |
+|------|------|----------------|
 | Organisations | `list_organisations` | |
-| Choices | `list_choices` (income, expense and contact types, in your own words) | |
+| Choices | `list_choices` (income, expense and contact types, IRD return lines, in your own words) | |
 | Tax year | `get_tax_year_overview`, `get_tax_summary`, `get_profit_and_loss` | |
-| Income | `get_income_history`, `list_income`, `get_income_record` | `create_income` (commission, rent or tenant reimbursement) |
-| Expenses | `list_expenses`, `get_expense_record`, `list_expense_accounts` | `create_expense` |
-| Contacts | `list_contacts` | `create_contact` |
-| Rental properties | `list_properties` (with tenancies), `get_rental_report` | `create_property`, `create_tenancy` |
+| Income | `get_income_history`, `list_income`, `get_income_record` | `create_income` (commission, rent or tenant reimbursement), `update_income` |
+| Expenses | `list_expenses`, `get_expense_record`, `list_expense_accounts` | `create_expense`, `update_expense`, `create_expense_account`, `update_expense_account` |
+| Contacts | `list_contacts`, `list_contact_types` | `create_contact`, `update_contact`, `set_contact_paye_salary`, `set_contact_acc_classifications`, `create_contact_type`, `update_contact_type` |
+| Rental properties | `list_properties` (with tenancies), `get_rental_report` | `create_property`, `update_property`, `create_tenancy`, `update_tenancy` |
+| Savings | `get_savings_plan` | `update_savings_plan`, `copy_savings_plan_from_previous_year` |
+| Scheduled reports | `list_scheduled_report_types`, `list_scheduled_reports` (owners) | `create_scheduled_report`, `update_scheduled_report` (owners), `send_scheduled_report_now` |
 | Bank | `get_bank_inbox`, `get_reconciliation_status` | |
 
-Every tool is annotated: the read tools are read-only, and no tool is destructive. Adding is refused unless an owner
-chose **Read and add records**. Adding is safe to repeat: the same details sent again return the record already made.
+Every tool is annotated: the read tools are read-only, the tools that change what is already there are marked
+destructive, and sending a report is marked as reaching outside Tax App. Adding and changing are refused unless an
+owner chose **Read, add and change records**, and never go beyond your own role. The AI app sends only what you tell
+it, such as dates, amounts and who paid: Tax App works out GST, KiwiSaver, ACC levy, tax and every total itself,
+exactly as it does on its own forms. Adding is safe to repeat: the same details sent again return the record already
+made. A change sends only the fields that change.
 
 ## What it cannot do
 
-- Delete or change any record, including one it added
+- Delete anything
 - Reconcile bank statements or change a match
-- Change settings or members
+- Change organisation settings, members or connections to other services
 - See anything your own role cannot, or an organisation you did not tick
 - File a return with Inland Revenue
 
 ## Keeping it safe
 
 - It signs in as you and never sees your password.
+- Every change it makes is in the organisation's audit trail, marked as made through the AI connector.
 - Owners see every AI connector under **Settings > AI connectors** and can remove any of them; switching AI connectors
   off ends them all.
 - Changing your password ends every AI connector you made.
