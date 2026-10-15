@@ -52,6 +52,7 @@ reach.
 | Claude (web, desktop, mobile) | Settings > Connectors > Add custom connector, name `taxapp`, URL `https://mcp.taxapp.nz/mcp` |
 | Claude Code | `claude mcp add --transport http taxapp https://mcp.taxapp.nz/mcp` |
 | ChatGPT | Settings > Apps (developer mode on) > create, URL `https://mcp.taxapp.nz/mcp`, authentication OAuth |
+| Grok (web, phone apps) | grok.com/connectors (or Connectors in the app) > New Connector > Custom, name `taxapp`, URL `https://mcp.taxapp.nz/mcp` |
 | Cursor | Add `"taxapp": { "url": "https://mcp.taxapp.nz/mcp" }` under `mcpServers` in `~/.cursor/mcp.json` |
 
 ## How to use it
