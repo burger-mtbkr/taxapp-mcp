@@ -85,7 +85,7 @@ dollars.
 | Expenses | `list_expenses`, `get_expense_record`, `list_expense_accounts` | `create_expense`, `update_expense`, `create_expense_account`, `update_expense_account` |
 | Contacts | `list_contacts`, `list_contact_types` | `create_contact`, `update_contact`, `set_contact_paye_salary`, `set_contact_acc_classifications`, `create_contact_type`, `update_contact_type` |
 | Rental properties | `list_properties` (with tenancies), `get_rental_report` | `create_property`, `update_property`, `create_tenancy`, `update_tenancy` |
-| Savings | `get_savings_plan` | `update_savings_plan`, `copy_savings_plan_from_previous_year` |
+| Savings | `get_savings_plan` | `update_savings_plan` |
 | Scheduled reports | `list_scheduled_report_types`, `list_scheduled_reports` (owners) | `create_scheduled_report`, `update_scheduled_report` (owners), `send_scheduled_report_now` |
 | Bank | `get_bank_inbox`, `get_reconciliation_status` | |
 
