@@ -81,10 +81,10 @@ dollars.
 | Organisations | `list_organisations` | |
 | Choices | `list_choices` (income, expense and contact types, IRD return lines, in your own words) | |
 | Tax year | `get_tax_year_overview`, `get_tax_summary`, `get_profit_and_loss` | |
-| Income | `get_income_history`, `list_income`, `get_income_record` | `create_income` (commission, rent, tenant reimbursement, short stays and their refunds), `update_income` |
+| Income | `get_income_history`, `list_income`, `get_income_record` (a short stay with every detail, its GST treatment included) | `create_income` (commission, rent, tenant reimbursement, short stays and their refunds), `update_income` (including cancelling or reinstating a booking) |
 | Expenses | `list_expenses`, `get_expense_record`, `list_expense_accounts` | `create_expense`, `update_expense`, `create_expense_account`, `update_expense_account` |
-| Contacts | `list_contacts`, `list_contact_types` | `create_contact`, `update_contact`, `set_contact_paye_salary`, `set_contact_acc_classifications`, `create_contact_type`, `update_contact_type` |
-| Rental properties | `list_properties` (with tenancies), `get_rental_report` | `create_property`, `update_property`, `create_tenancy`, `update_tenancy` |
+| Contacts | `list_contacts`, `list_contact_types` | `create_contact`, `update_contact` (with an owner's or partnership's GST registration), `set_contact_paye_salary`, `set_contact_acc_classifications`, `create_contact_type`, `update_contact_type` |
+| Rental properties | `list_properties` (with tenancies and short-stay GST setup), `get_rental_report` | `create_property`, `update_property` (with who is registered for short-stay GST, and the day a change applies from), `create_tenancy`, `update_tenancy` |
 | Savings | `get_savings_plan` | `update_savings_plan` |
 | Scheduled reports | `list_scheduled_report_types`, `list_scheduled_reports` (owners) | `create_scheduled_report`, `update_scheduled_report` (owners), `send_scheduled_report_now` |
 | Bank | `get_bank_inbox`, `get_reconciliation_status` | |
