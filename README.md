@@ -81,7 +81,7 @@ dollars.
 | Organisations | `list_organisations` | |
 | Choices | `list_choices` (income, expense and contact types, IRD return lines, in your own words) | |
 | Tax year | `get_tax_year_overview`, `get_tax_summary`, `get_profit_and_loss` | |
-| Income | `get_income_history`, `list_income`, `get_income_record` | `create_income` (commission, rent or tenant reimbursement), `update_income` |
+| Income | `get_income_history`, `list_income`, `get_income_record` | `create_income` (commission, rent, tenant reimbursement, short stays and their refunds), `update_income` |
 | Expenses | `list_expenses`, `get_expense_record`, `list_expense_accounts` | `create_expense`, `update_expense`, `create_expense_account`, `update_expense_account` |
 | Contacts | `list_contacts`, `list_contact_types` | `create_contact`, `update_contact`, `set_contact_paye_salary`, `set_contact_acc_classifications`, `create_contact_type`, `update_contact_type` |
 | Rental properties | `list_properties` (with tenancies), `get_rental_report` | `create_property`, `update_property`, `create_tenancy`, `update_tenancy` |
